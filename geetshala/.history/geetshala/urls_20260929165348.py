@@ -17,7 +17,6 @@ Including another URLconf
 # Project-level URLconf: routes to 'admin/' and the 'songs' app
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(pattern_name='song_list'), name='home'),
