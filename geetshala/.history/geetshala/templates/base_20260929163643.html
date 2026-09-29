@@ -1,0 +1,23 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{% block title %} Welcome to Geetshala{% endblock %}</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Geetshala</h1>
+    </header>
+    <nav>
+      <!-- Navigation links -->
+    </nav>
+    <main>
+      {% block content %}
+      <!-- Default content can go here -->
+      {% endblock %}
+    </main>
+    <footer>
+      <p>&copy; 2024 Geetshala</p>
+    </footer>
+  </body>
+</html>
