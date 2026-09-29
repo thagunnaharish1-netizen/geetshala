@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Submit Feedback - Geetshala{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/feedback.css' %}">{% endblock %}
+
+{% block content %}
+<div class="feedback-box">
+    <h2>Submit Platform Feedback</h2>
+    <p>Log features, bugs, or aesthetic design recommendations directly.</p>
+
+    {% if success %}
+        <div class="alert-success">Thank you! Your feedback form has been processed securely.</div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" name="email" class="form-control" required placeholder="name@example.com">
+        </div>
+        <div class="form-group">
+            <label>Subject</label>
+            <input type="text" name="subject" class="form-control" required placeholder="Feature request, bug, formatting issue...">
+        </div>
+        <div class="form-group">
+            <label>Detailed Message</label>
+            <textarea name="message" class="form-control" rows="5" required placeholder="Type your message here..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Submit Form</button>
+    </form>
+</div>
+{% endblock %}

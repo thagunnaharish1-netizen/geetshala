@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Geetshala - Web Player{% endblock %}</title>
+  
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block extra_css %}{% endblock %}
+    
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <!-- <h2><a href="{% url 'song_explore' %}"><i class="fa-solid fa-music"></i> Geetshala</a></h2> -->
+                <h2><a href="{% url 'song_explore' %}"><img src="{% static 'images/favicon.png' %}" alt="Geetshala Logo" style="height: 1em; vertical-align: middle; margin-right: 8px;"> Geetshala</a></h2>
+
+            </div>
+            
+            <div class="search-box-container" style="padding: 0 12px; margin-top: 10px;">
+                <div style="position: relative;">
+                    <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 12px; top: 12px; color: var(--text-muted);"></i>
+                    <input type="text" id="sidebar-search-input" placeholder="Search track library..." 
+                           style="width: 100%; padding: 10px 12px 10px 36px; background: #0f0f12; border: 1px solid var(--border-color); border-radius: 20px; color: #fff; font-size: 0.85rem; outline: none;">
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a href="{% url 'song_explore' %}" class="nav-item"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="{% url 'feedback_submit' %}" class="nav-item"><i class="fa-solid fa-comment-dots"></i> Feedback</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section class="content-wrapper">
+                {% block content %}{% endblock %}
+            </section>
+        </main>
+    </div>
+
+    <footer class="player-bar">
+        <div class="track-info" style="display: flex; align-items: center; gap: 12px;">
+            <div id="player-art-placeholder" style="width: 48px; height: 48px; background: #282828; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <i class="fa-solid fa-music" style="color: var(--text-muted);"></i>
+            </div>
+            <div>
+                <p class="track-title" id="current-title">Select a song</p>
+                <p class="track-artist" id="current-artist">Artist</p>
+            </div>
+        </div>
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button class="control-btn"><i class="fa-solid fa-backward-step"></i></button>
+                <button class="control-btn play-btn" id="global-play-btn"><i class="fa-solid fa-circle-play"></i></button>
+                <button class="control-btn"><i class="fa-solid fa-forward-step"></i></button>
+            </div>
+            <audio id="main-audio-engine" src=""></audio>
+        </div>
+        <div class="volume-controls"></div>
+    </footer>
+
+    <script src="{% static 'js/player.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

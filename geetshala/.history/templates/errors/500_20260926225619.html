@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Glitch - Geetshala</title>
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --bg-dark: #0f0f12;
+            --accent: #ff4a4a;
+            --text-main: #ffffff;
+            --text-muted: #a7a7a7;
+            --card-bg: #16161a;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .error-container {
+            background-color: var(--card-bg);
+            padding: 60px 40px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid #352a2a;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.6);
+        }
+        .icon-box {
+            font-size: 4.5rem;
+            color: var(--accent);
+            margin-bottom: 24px;
+            animation: glitch 1s linear infinite;
+        }
+        h1 { font-size: 2.2rem; font-weight: 700; margin-bottom: 12px; }
+        p { color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 32px; }
+        .btn-retry {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: transparent;
+            border: 2px solid #2a2a35;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-retry:hover { background-color: #2a2a35; border-color: #a7a7a7; }
+        @keyframes glitch {
+            0%, 100% { transform: skew(0deg); }
+            20% { transform: skew(-3deg); }
+            40% { transform: skew(3deg); }
+            60% { transform: skew(-1deg); }
+            80% { transform: skew(1deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <div class="icon-box"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <h1>500: Amplifer Overload</h1>
+        <p>Our server encountered an internal database wiring distortion or exception runtime glitch while generating your song queue layout dashboard.</p>
+        <button onclick="window.location.reload();" class="btn-retry"><i class="fa-solid fa-rotate-right"></i> Reload Stream</button>
+    </div>
+</body>
+</html>
